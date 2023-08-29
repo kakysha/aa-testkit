@@ -1,3 +1,4 @@
+// npx mocha --no-exit test/core/nonserials.spec.js
 const { Testkit } = require('../../main')
 const { Network } = Testkit()
 const ObjectHash = require('ocore/object_hash')
@@ -14,7 +15,7 @@ describe('Check nonserials', function () {
 		// witness address: GM2YA62K6DWSJPI6GTMO22DPPYMOB6CL
 		// genesis unit: A1N9KyyDdKq9vhUPVESmIwzrZMb3V+wKyMpOdbNO/QM=
 		this.network = await Network.create({ mnemonic: 'mass work afraid spy traffic popular clinic grain child firm grass engage' })
-			// .with.explorer()
+			.with.explorer()
 			.with.numberOfWitnesses(1)
 			.run()
 		this.genesis = await this.network.getGenesisNode().ready()
@@ -233,6 +234,6 @@ describe('Check nonserials', function () {
 	}).timeout(30000 * 1000)
 
 	after(async () => {
-		await this.network.stop()
+		// await this.network.stop()
 	})
 })
